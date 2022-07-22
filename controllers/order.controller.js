@@ -13,9 +13,10 @@ exports.order = (req, res) => {
   ) {
     res.status(400).send({ message: "Provide addressId and productId" });
   } else {
-    let product, address, user;
+    let product, address, user, amount;
     Product.findOne({ _id: req.body.productId }, (err, productData) => {
       product = productData;
+      amount = productData.price;
       if (err) {
         res.status(400).send({
           message: `No Product found for ID - ${req.body.productId}!`,
@@ -51,7 +52,7 @@ exports.order = (req, res) => {
         product: product,
         shippingAddress: address,
         quantity: req.body.quantity,
-        amount: req.body.quantity * 5000,
+        amount: amount * req.body.quantity,
       });
       order
         .save(order)

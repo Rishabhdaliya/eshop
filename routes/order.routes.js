@@ -5,5 +5,5 @@ module.exports = (app) => {
 
   router.post("/orders", order.order);
 
-  app.use("/api", router);
+  app.use("/api", auth, router);
 };

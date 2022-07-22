@@ -6,5 +6,5 @@ module.exports = (app) => {
 
   router.post("/add-address", address.addAddress);
 
-  app.use("/api/addresses", router);
+  app.use("/api/addresses", auth, router);
 };

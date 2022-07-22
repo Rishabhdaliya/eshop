@@ -57,6 +57,7 @@ exports.login = (req, res) => {
       data.token = token;
 
       const response = {
+        userId: data._id,
         name: data.firstName + " " + data.lastName,
         email: data.email,
         isAuthenticated: true,

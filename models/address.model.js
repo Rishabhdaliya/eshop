@@ -13,6 +13,9 @@ module.exports = (mongoose) => {
       city: String,
       state: String,
       zipcode: String,
+      user: {
+        type: Object,
+      },
       createdAt: { type: Date, default: Date.now },
       updatedAt: { type: Date, default: Date.now },
     })

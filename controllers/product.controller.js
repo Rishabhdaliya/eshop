@@ -133,3 +133,19 @@ exports.deleteById = (req, res) => {
     });
   }
 };
+
+exports.productByCategory = (req, res) => {
+  console.log(">>", req.body);
+  Product.find({ category: req.body.category }, (err, data) => {
+    if (!data) {
+      console.log(data);
+      res.status(404).send({
+        message: `No Product found for category - ${req.body.category}`,
+      });
+    } else {
+      res
+        .status(200)
+        .send({ message: "Found product for category", data: data });
+    }
+  });
+};
