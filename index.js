@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const PORT = 8080;
 const cors = require("cors");
 const db = require("./models/index");
+const dotenv = require("dotenv").config();
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -33,6 +34,6 @@ require("./routes/address.routes")(app);
 require("./routes/product.routes")(app);
 require("./routes/order.routes")(app);
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log("server connected");
 });
